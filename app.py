@@ -283,11 +283,10 @@ fig = px.bar(
         text="Count",
         color="Operator"
     )
+fig.update_traces(textposition="outside")
+fig.update_layout(showlegend=False)
 
-    fig.update_traces(textposition="outside")
-    fig.update_layout(showlegend=False)
-
-    st.plotly_chart(style_chart(fig), width='stretch')
+st.plotly_chart(style_chart(fig), width='stretch')
 
 # ---------------------------
 # TREEMAP VIEW
