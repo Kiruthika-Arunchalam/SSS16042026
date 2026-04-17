@@ -251,30 +251,30 @@ trend.columns = ["Operator", "Count"]
 # ---------------------------
 # VIEW MODE TOGGLE
 # ---------------------------
-view_mode = st.radio(
-    "Select View",
-    ["Top Operators (Bar)", "Treemap View"]
-)
+# view_mode = st.radio(
+#     "Select View",
+#     ["Top Operators (Bar)", "Treemap View"]
+# )
 
 # ---------------------------
 # TOP OPERATORS (BAR CHART)
 # ---------------------------
-if view_mode == "Top Operators (Bar)":
+# if view_mode == "Top Operators (Bar)":
 
-    top_n = st.slider("Select Top Operators", 5, 30, 15)
+#     top_n = st.slider("Select Top Operators", 5, 30, 15)
 
-    top_df = trend.head(top_n)
+#     top_df = trend.head(top_n)
 
-    others_count = trend["Count"][top_n:].sum()
+#     others_count = trend["Count"][top_n:].sum()
 
-    if others_count > 0:
-        others_df = pd.DataFrame({
-            "Operator": ["OTHERS"],
-            "Count": [others_count]
-        })
-        final_trend = pd.concat([top_df, others_df])
-    else:
-        final_trend = top_df
+#     if others_count > 0:
+#         others_df = pd.DataFrame({
+#             "Operator": ["OTHERS"],
+#             "Count": [others_count]
+#         })
+#         final_trend = pd.concat([top_df, others_df])
+#     else:
+#         final_trend = top_df
 
     fig = px.bar(
         final_trend,
@@ -295,27 +295,27 @@ if view_mode == "Top Operators (Bar)":
 # ---------------------------
 # IMPROVED TREEMAP
 # ---------------------------
-st.markdown('<div class="section">Operator Distribution (Clean Treemap)</div>', unsafe_allow_html=True)
+# st.markdown('<div class="section">Operator Distribution (Clean Treemap)</div>', unsafe_allow_html=True)
 
-# Prepare Data
-trend = filtered_df["Operator_Code"].value_counts().reset_index()
-trend.columns = ["Operator", "Count"]
+# # Prepare Data
+# trend = filtered_df["Operator_Code"].value_counts().reset_index()
+# trend.columns = ["Operator", "Count"]
 
-# Top N selection
-top_n = st.slider("Treemap Top Operators", 5, 30, 15)
+# # Top N selection
+# top_n = st.slider("Treemap Top Operators", 5, 30, 15)
 
-top_df = trend.head(top_n)
+# top_df = trend.head(top_n)
 
-others_count = trend["Count"][top_n:].sum()
+# others_count = trend["Count"][top_n:].sum()
 
-if others_count > 0:
-    others_df = pd.DataFrame({
-        "Operator": ["OTHERS"],
-        "Count": [others_count]
-    })
-    treemap_df = pd.concat([top_df, others_df])
-else:
-    treemap_df = top_df
+# if others_count > 0:
+#     others_df = pd.DataFrame({
+#         "Operator": ["OTHERS"],
+#         "Count": [others_count]
+#     })
+#     treemap_df = pd.concat([top_df, others_df])
+# else:
+#     treemap_df = top_df
 
 # Treemap
 fig_tree = px.treemap(
