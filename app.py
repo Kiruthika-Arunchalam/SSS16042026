@@ -277,11 +277,13 @@ trend.columns = ["Operator", "Count"]
 #         final_trend = top_df
 
 fig = px.bar(
+        trend,   # 🔥 THIS WAS MISSING
         x="Operator",
         y="Count",
         text="Count",
         color="Operator"
     )
+
 fig.update_traces(textposition="outside")
 fig.update_layout(showlegend=False)
 
@@ -316,6 +318,7 @@ st.plotly_chart(style_chart(fig), width='stretch')
 #     treemap_df = top_df
 
 # Treemap
+treemap_df = trend.copy()   # simple fix (or use your Top N logic)
 fig_tree = px.treemap(
     treemap_df,
     path=["Operator"],
