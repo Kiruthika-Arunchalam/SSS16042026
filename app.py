@@ -276,7 +276,7 @@ trend.columns = ["Operator", "Count"]
 #     else:
 #         final_trend = top_df
 
-    fig = px.bar(
+fig = px.bar(
         final_trend,
         x="Operator",
         y="Count",
